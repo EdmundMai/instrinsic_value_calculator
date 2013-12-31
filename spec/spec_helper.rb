@@ -5,7 +5,16 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require_relative "../lib/data_retriever"
+require File.join(File.dirname(__FILE__), '../application')
 require 'webmock/rspec'
+require 'sinatra'
+require 'rspec'
+
+Sinatra::Base.set :environment, :test
+Sinatra::Base.set :run, false
+Sinatra::Base.set :raise_errors, true
+Sinatra::Base.set :logging, false
+
 WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
