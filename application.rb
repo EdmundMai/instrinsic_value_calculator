@@ -1,7 +1,9 @@
 require 'sinatra'
 
+set :public_folder, 'views'
+
 get '/' do
-  "hello world!"
+  send_file File.join(settings.public_folder, 'here.html')
 end
 
 get '/evaluate/:ticker_symbol' do
